@@ -6,7 +6,7 @@ import colorsys
 # Function that returns the real value of f(z)
 def f(z):
     try:
-        return cmath.sin(1/z)
+        return cmath.sin(z)
     except:
         return 0
 
@@ -29,7 +29,7 @@ def main(width, height, scale, origin):
             z = MAP(x,y,scale,origin)
             # Determine colouring of pixel (in HLS)
             H = cmath.phase(f(z))  
-            L = 1 - 2**(-abs(z))
+            L = 1 - 2**(-abs(f(z)))
             S = 1
 
             # Converts HLS to RGB
@@ -41,5 +41,4 @@ def main(width, height, scale, origin):
     return img
 
 if __name__ == "__main__":
-    cwgraph = main(1920,1920,1000,(960,960))
     cwgraph.show()
